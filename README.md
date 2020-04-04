@@ -1,5 +1,5 @@
 # Skin Cancer Detector
-[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT) [![Python](https://img.shields.io/badge/python-3.7.6-blue)] [![numpy](https://https://img.shields.io/badge/numpy-1.18.1-blue)]
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT) [Python](https://img.shields.io/badge/python-3.7.6-blue) [numpy](https://https://img.shields.io/badge/numpy-1.18.1-blue)
 
 Python script to detect cancer using the AlexNet model. This is a project proposed by the [Machine Learning Engineer Nano Degree](https://www.udacity.com/course/machine-learning-engineer-nanodegree--nd009t).
 The training process can be stopped and resumed. A PNG file is saved containing the loss and accuracy per epoch. This process allows the user to tune the learning rate between epochs. 
