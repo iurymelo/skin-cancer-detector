@@ -60,6 +60,8 @@ Where 'NUM_EPOCH' is the number of the epoch.
 Work in progress :ghost::ghost::ghost:
 
 ## TODO
-Next step is to 
+* Finish training
+* Train on ResNet 50
+* Compare Results
 
 **Made with :purple_heart: by Iury Melo !**
