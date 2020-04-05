@@ -12,6 +12,7 @@ train_images = []
 train_labels = []
 test_images =  []
 test_labels = []
+img_size = 256
 
 base_path = 'C:/Users/iurym/Documents/Python/DermatologistAI/dermatologist-ai/dermatologis-ai/'
 melanoma_train_dir ='data/train/melanoma/'
@@ -28,7 +29,7 @@ print("[INFO] preparaing train set")
 for filename in os.listdir(melanoma_train_dir):
     image = cv.imread(base_path+melanoma_train_dir+filename)
     image = cv.cvtColor(image, cv.COLOR_BGR2GRAY)
-    image = cv.resize(image, (100, 100), interpolation=cv.INTER_AREA)
+    image = cv.resize(image, (img_size, img_size), interpolation=cv.INTER_AREA)
     train_images.append(image)
     train_labels.append('melanoma')
 
@@ -36,14 +37,14 @@ for filename in os.listdir(melanoma_train_dir):
 for filename in os.listdir(nevus_train_dir):
     image = cv.imread(base_path+nevus_train_dir+filename)
     image = cv.cvtColor(image, cv.COLOR_BGR2GRAY)
-    image = cv.resize(image, (100, 100), interpolation=cv.INTER_AREA)
+    image = cv.resize(image, (img_size, img_size), interpolation=cv.INTER_AREA)
     train_images.append(image)
     train_labels.append('nevus')
     
 for filename in os.listdir(seborrheic_keratosis_train_dir):
     image = cv.imread(base_path+seborrheic_keratosis_train_dir+filename)
     image = cv.cvtColor(image, cv.COLOR_BGR2GRAY)
-    image = cv.resize(image, (100, 100), interpolation=cv.INTER_AREA)
+    image = cv.resize(image, (img_size, img_size), interpolation=cv.INTER_AREA)
     train_images.append(image)
     train_labels.append('seborrheic_keratosis')
 
@@ -56,21 +57,21 @@ print("[INFO] preparaing test set")
 for filename in os.listdir(melanoma_test_dir):
     image = cv.imread(base_path+melanoma_test_dir+filename)
     image = cv.cvtColor(image, cv.COLOR_BGR2GRAY)
-    image = cv.resize(image, (100, 100), interpolation=cv.INTER_AREA)
+    image = cv.resize(image, (img_size, img_size), interpolation=cv.INTER_AREA)
     test_images.append(image)
     test_labels.append('melanoma')
     
 for filename in os.listdir(nevus_test_dir):
     image = cv.imread(base_path+nevus_test_dir+filename)
     image = cv.cvtColor(image, cv.COLOR_BGR2GRAY)
-    image = cv.resize(image, (100, 100), interpolation=cv.INTER_AREA)
+    image = cv.resize(image, (img_size, img_size), interpolation=cv.INTER_AREA)
     test_images.append(image)
     test_labels.append('nevus')
     
 for filename in os.listdir(seborrheic_keratosis_test_dir):
     image = cv.imread(base_path+seborrheic_keratosis_test_dir+filename)
     image = cv.cvtColor(image, cv.COLOR_BGR2GRAY)
-    image = cv.resize(image, (100, 100), interpolation=cv.INTER_AREA)
+    image = cv.resize(image, (img_size, img_size), interpolation=cv.INTER_AREA)
     test_images.append(image)
     test_labels.append('seborrheic_keratosis')
 

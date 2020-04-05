@@ -39,7 +39,6 @@ class TrainingMonitor(BaseLogger):
 						self.H[k] = self.H[k][:self.startAt]
 
 	def on_epoch_end(self, epoch, logs={}):
-		print(self.H)
 		# loop over the logs and update the loss, accuracy, etc.
 		# for the entire training process
 		for (k, v) in logs.items():

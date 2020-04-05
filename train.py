@@ -51,7 +51,6 @@ def _get_available_gpus():
     return [x for x in tfback._LOCAL_DEVICES if 'device:gpu' in x.lower()]
 
 tfback._get_available_gpus = _get_available_gpus
-
 # construct the argument parser and parse the arguments
 ap = argparse.ArgumentParser() 
 ap.add_argument("-c", "--checkpoints", required=True,
@@ -65,12 +64,12 @@ args = vars(ap.parse_args())
 
 # initialize some parameters that will be used
 num_epochs = 80
-batch_size = 64
+batch_size = 16
 learning_rate = 1e-2
 np.random.seed(9)
-img_size = 100
+img_size = 256
 dropout_value = 0.4
-backup_every = 5
+backup_every = 2
 
 # optimizer
 opt = Adam(learning_rate = learning_rate)
@@ -78,12 +77,14 @@ opt = Adam(learning_rate = learning_rate)
 # func to load the training and test dataset
 def load_data():
     
+    print('[info] opening training data')
     npzfile = np.load('data/training_data.npz')
     train = npzfile['arr_0']
     
     npzfile = np.load('data/training_labels.npz')
     train_labels = npzfile['arr_0']
     
+    print('[info] opening test data')
     npzfile = np.load('data/test_data.npz')
     test = npzfile['arr_0']
     
@@ -101,6 +102,8 @@ print("[INFO] loading dataset...")
 # reshape label
 trainY = trainY.reshape(trainY.shape[0], 1)
 testY = testY.reshape(testY.shape[0], 1)
+
+print(trainX.shape)
 
 # reshape data
 trainX = trainX.reshape(trainX.shape[0], trainX.shape[1], trainX.shape[2], 1 )
@@ -128,7 +131,7 @@ if args["model"] is None:
     model = Sequential()
     
     # layer 1
-    model.add(Conv2D(filters=96, input_shape=(100, 100, 1), 
+    model.add(Conv2D(filters=96, input_shape=(img_size, img_size, 1), 
                      kernel_size=(11, 11), strides=(4, 4), 
                      padding='valid'))
     model.add(Activation('relu'))

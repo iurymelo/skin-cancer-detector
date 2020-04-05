@@ -3,6 +3,7 @@
 
 Python script to detect cancer using the AlexNet model. This is a project proposed by the [Machine Learning Engineer Nano Degree](https://www.udacity.com/course/machine-learning-engineer-nanodegree--nd009t).
 The training process can be stopped and resumed. A PNG file is saved containing the loss and accuracy per epoch. This process allows the user to tune the learning rate between epochs. 
+The next step in this project is to add batch training.
 
 ## Technologies :rocket: :
 
@@ -60,6 +61,7 @@ Where 'NUM_EPOCH' is the number of the epoch.
 Work in progress :ghost::ghost::ghost:
 
 ## TODO
+* Add batch training
 * Finish training
 * Train on ResNet 50
 * Compare Results

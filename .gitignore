@@ -1,2 +1,4 @@
 .DS_Store
 data/
+output/checkpoints/epoch_*
+output/skin_cancer.json
