@@ -3,7 +3,7 @@
 
 Python script to detect cancer using the AlexNet model. This is a project proposed by the [Machine Learning Engineer Nano Degree](https://www.udacity.com/course/machine-learning-engineer-nanodegree--nd009t).
 The training process can be stopped and resumed. A PNG file is saved containing the loss and accuracy per epoch. This process allows the user to tune the learning rate between epochs. 
-The next step in this project is to add batch training.
+
 
 ## Technologies :rocket: :
 
@@ -39,12 +39,12 @@ mkdir train; mkdir valid; mkdir test
 Download and unzip the [training data](https://s3-us-west-1.amazonaws.com/udacity-dlnfd/datasets/skin-cancer/train.zip), [validation data](https://s3-us-west-1.amazonaws.com/udacity-dlnfd/datasets/skin-cancer/valid.zip), and [test data](https://s3-us-west-1.amazonaws.com/udacity-dlnfd/datasets/skin-cancer/test.zip).
 Place the training, validation, and test images in the `data/` folder, at `data/train/`, `data/valid/`, and `data/test/`, respectively.
 
-Navigate back to the root folder and prepare the data set by running:
+If you want to make the imagem 100x100 grayscale, navigate back to the root folder an run:
 ```
 python prepare-dataset.py
 ```
 
-After the proccess is finished, run
+To start training run:
 ```
 python train.py -c output/checkpoints
 ```
@@ -61,7 +61,6 @@ Where 'NUM_EPOCH' is the number of the epoch.
 Work in progress :ghost::ghost::ghost:
 
 ## TODO
-* Add batch training
 * Finish training
 * Train on ResNet 50
 * Compare Results

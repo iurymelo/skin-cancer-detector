@@ -12,7 +12,7 @@ train_images = []
 train_labels = []
 test_images =  []
 test_labels = []
-img_size = 256
+img_size = 100
 
 base_path = 'C:/Users/iurym/Documents/Python/DermatologistAI/dermatologist-ai/dermatologis-ai/'
 melanoma_train_dir ='data/train/melanoma/'
