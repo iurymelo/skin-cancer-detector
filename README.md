@@ -15,7 +15,7 @@ The training process can be stopped and resumed. A PNG file is saved containing 
 
 ## Network Summary
 <h1 align="center">
-<img src='https://i.imgur.com/8LQZgjZ.png'   alt="Summary" title="summary" />
+<img src='https://i.imgur.com/7NNsaes.png'   alt="Summary" title="summary" />
 </h1>
 
 ## Setup
