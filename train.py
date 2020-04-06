@@ -63,11 +63,11 @@ args = vars(ap.parse_args())
 
 # initialize some parameters that will be used
 num_epochs = 80
-learning_rate = 1e-2
+learning_rate = 1e-3
 np.random.seed(8)
-img_size = 100
+img_size = 200
 dropout_value = 0.4
-backup_every = 2
+backup_every = 5
 batch = 32
 
 # optimizer
@@ -77,7 +77,8 @@ opt = Adam(learning_rate = learning_rate)
 # datasets
 train_datagen = ImageDataGenerator(horizontal_flip=True,
                                      fill_mode="nearest", 
-                                     zca_whitening=False)
+                                     zca_whitening=False,
+                                     )
 
 test_datagem = ImageDataGenerator(horizontal_flip=True,
                                      fill_mode="nearest",
@@ -91,7 +92,7 @@ train_batches = train_datagen.flow_from_directory('data/train/',
                                                   classes=['melanoma', 'nevus', 'seborrheic_keratosis'],
                                                   batch_size=batch)
 
-test_batches = test_datagem.flow_from_directory('data/test/', 
+test_batches = test_datagem.flow_from_directory('data/test/',
                                                 class_mode='categorical',
                                                 target_size=(img_size, img_size),
                                                 classes=['melanoma', 'nevus', 'seborrheic_keratosis'],
@@ -104,28 +105,28 @@ if args["model"] is None:
     model = Sequential()
     
     # layer 1
-    model.add(Conv2D(filters=96, input_shape=(img_size, img_size, 3), 
-                     kernel_size=(11, 11), strides=(4, 4), 
+    model.add(Conv2D(filters=64, input_shape=(img_size, img_size, 3), 
+                     kernel_size=(7, 7), strides=(4, 4), 
                      padding='valid'))
     model.add(Activation('relu'))
     model.add(MaxPooling2D(pool_size=(2,2), strides=(1,1), padding='valid',
                            dim_ordering="th"))
     
     #layer 2
-    model.add(Conv2D(filters=256, kernel_size=(11, 11), 
+    model.add(Conv2D(filters=64, kernel_size=(11, 11), 
                      strides=(1, 1), padding='valid'))
     model.add(Activation('relu'))
     model.add(MaxPooling2D(pool_size=(2,2), strides=(1,1), padding='valid', 
                            dim_ordering="th"))
     
     # layer 3
-    model.add(Conv2D(filters=384, kernel_size=(3, 3), 
-                     strides=(1, 1), padding='valid'))
+    model.add(Conv2D(filters=128, kernel_size=(3, 3), 
+                     strides=(2, 2), padding='valid'))
     model.add(Activation('relu'))
     
     # layer 4
-    model.add(Conv2D(filters=384, kernel_size=(3, 3), 
-                     strides=(1, 1), padding='valid'))
+    model.add(Conv2D(filters=128, kernel_size=(3, 3), 
+                     strides=(2, 2), padding='valid'))
     model.add(Activation('relu'))
     
     # layer 5
@@ -136,19 +137,10 @@ if args["model"] is None:
     model.add(Flatten())
     
     # full connected layer 1
-    model.add(Dense(4096, input_shape=(img_size*img_size*1,)))
+    model.add(Dense(512, input_shape=(img_size*img_size*1,)))
     model.add(Activation('relu'))
     model.add(Dropout(dropout_value))
     
-    # full connected layer 2
-    model.add(Dense(4096))
-    model.add(Activation('relu'))
-    model.add(Dropout(dropout_value))
-    
-    # full connected layer 3
-    model.add(Dense(1000))
-    model.add(Activation('relu'))
-    model.add(Dropout(dropout_value))    
     
     # output layer
     model.add(Dense(3))
