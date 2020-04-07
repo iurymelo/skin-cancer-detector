@@ -41,12 +41,12 @@ Download and unzip the [training data](https://s3-us-west-1.amazonaws.com/udacit
 Place the training, validation, and test images in the `data/` folder, at `data/train/`, `data/valid/`, and `data/test/`, respectively.
 
 If you want to make the imagem 100x100 grayscale, navigate back to the root folder an run:
-```
+```sh
 python prepare-dataset.py
 ```
 
 To start training run:
-```
+```sh
 python train.py -c output/checkpoints
 ```
 
@@ -58,12 +58,10 @@ python train.py --checkpoints output/checkpoints --model output/checkpoints/epoc
 ```
 Where 'NUM_EPOCH' is the number of the epoch.
 
-### Detecting Cancer
-Work in progress :ghost::ghost::ghost:
-
-## TODO
-* Finish training
-* Train on ResNet 50
-* Compare Results
+### Validating
+You can validate the model by running:
+```sh
+python validate --model output/checkpoints/name_model.hdf5 --dataset data/valid
+```
 
 **Made with :purple_heart: by Iury Melo !**
